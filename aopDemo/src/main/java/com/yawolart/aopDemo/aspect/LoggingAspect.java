@@ -61,11 +61,14 @@ public class LoggingAspect {
         //the return statement here will do nothing as before
     }
 
-    @After(value = "execution(* com.yawolart.aopDemo.service.StudentService.createStudent(..))")
+    //Here, using pointcut signature method instead of write the
+    //whole pointcut expression
+    @After("com.yawolart.aopDemo.aspect.ApplicationPointcuts.logCreateStudentPointcutMethod()")
     public void logAfterMethod()
     {
         //this method execute for sure after the execution of the main method
-        System.out.println("[LoggingAspect] After advice");
+        System.out.println("[LoggingAspect] After advice <- using pointcut" +
+                "signature method");
         //same as before, the return statement do nothing
     }
 
